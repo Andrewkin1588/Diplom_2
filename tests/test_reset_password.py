@@ -6,6 +6,7 @@ from pages.reset_password_page import ResetPasswordPage
 
 class TestResetPassword:
 
+    allure.title("Тестирование восстановления пароля")
     def test_reset_password(self, browser):
         log_in_page = LoginPage(browser)
         forgot_password = ForgotPasswordPage(browser)

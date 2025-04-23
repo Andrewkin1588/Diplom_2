@@ -1,5 +1,3 @@
-import time
-
 import allure
 
 from pages.login_page import LoginPage
@@ -9,6 +7,7 @@ from constants import BASE_URL, ORDER_FEED
 
 class TestMainFunc:
 
+    allure.title("Тестирование основного функционала")
     def test_main_func(self, browser):
         main_page = MainPage(browser)
         login_page = LoginPage(browser)
@@ -18,10 +17,10 @@ class TestMainFunc:
         login_page.log_in()
         with allure.step("Нажимаем на Историю заказов"):
             main_page.click_to_feed_order()
-        assert browser.current_url == ORDER_FEED
+        assert main_page.get_current_url() == ORDER_FEED
         with allure.step("Нажимаем на конструктор"):
             main_page.click_to_constructor()
-        assert browser.current_url == BASE_URL
+        assert main_page.get_current_url() == BASE_URL
         with allure.step("Нажимаем на ингредиент"):
             main_page.click_to_ingredient()
         main_page.assertion_modal()

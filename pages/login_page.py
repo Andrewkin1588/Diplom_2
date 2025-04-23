@@ -1,7 +1,7 @@
 from pages.base_page import BasePage
 from constants import LOGIN_PAGE
 from locators.login_page_locators import FORGOT_PASSWORD_LINK, EMAIL_FILED, PASSWORD_FIELD, LOGIN_BUTTON
-from locators.profile_page_locators import ORDER_HISTORY, LOG_OUT
+from test_data import *
 
 class LoginPage(BasePage):
 
@@ -16,7 +16,7 @@ class LoginPage(BasePage):
 
     def log_in(self):
         self.get_to_login_page()
-        self.send_keys_to_field(EMAIL_FILED, 'test_andrew@test.ru')
-        self.send_keys_to_field(PASSWORD_FIELD, 'Andrewkin')
+        self.send_keys_to_field(EMAIL_FILED, EMAIL)
+        self.send_keys_to_field(PASSWORD_FIELD, PASSWORD)
         self.click_to_element_js(LOGIN_BUTTON)
         self.wait_change_url(LOGIN_PAGE)

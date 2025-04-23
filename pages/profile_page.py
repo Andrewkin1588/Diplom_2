@@ -1,9 +1,6 @@
-import time
-
 from pages.base_page import BasePage
 from locators.profile_page_locators import *
-from constants import ORDER_HISTORY_URL
-
+from constants import LOGIN_PAGE
 
 class ProfilePage(BasePage):
 
@@ -12,10 +9,10 @@ class ProfilePage(BasePage):
 
     def click_history_order(self):
         self.click_to_element_js(ORDER_HISTORY)
-        time.sleep(1)
 
     def log_out(self):
         self.click_to_element_js(LOG_OUT)
+        self.wait_change_url(LOGIN_PAGE)
 
     def get_order_number(self):
         return self.get_text_from_element(ORDER_NUMBER)

@@ -1,6 +1,6 @@
 import pytest
 
-from pages.base_page import WebdriverFactory
+from webdriver_factory import WebdriverFactory
 
 
 @pytest.fixture(params=['chrome', 'firefox'])

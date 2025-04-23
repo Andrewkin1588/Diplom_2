@@ -1,5 +1,4 @@
-import time
-
+from locators.profile_page_locators import ORDER_NUMBER, PROFILE
 from pages.base_page import BasePage
 from locators.main_page_locators import *
 from constants import BASE_URL
@@ -15,7 +14,7 @@ class MainPage(BasePage):
 
     def click_to_personal_account_link(self):
         self.click_to_element_js(PERSONAL_ACCOUNT_LINK)
-        time.sleep(1)
+        self.find_element(PROFILE)
 
     def click_to_feed_order(self):
         return self.click_to_element_js(FEED_ORDER)
@@ -34,7 +33,6 @@ class MainPage(BasePage):
 
     def added_ingredient(self):
         self.drag_drop(INGREDIENT, CONSTRUCTOR_TOP)
-        time.sleep(1)
 
     def assertion_counter(self):
         assert int(self.get_text_from_element(COUNTER)) == 2

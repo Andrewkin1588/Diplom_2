@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 
 ORDER_HISTORY = [By.XPATH, "//a[@href='/account/order-history']"]
+PROFILE = [By.XPATH, "//main[@class='App_componentContainer__2JC2W']"]
 LOG_OUT = [By.XPATH, "//button[@type='button']"]
 ORDER_NUMBER = [By.XPATH, "//ul[@class='OrderHistory_profileList__374GU OrderHistory_list__KcLDB']//li[last()]//p"]
 ORDER = [By.XPATH, "//li[@class='OrderHistory_listItem__2x95r mb-6']/a"]

@@ -1,5 +1,4 @@
 from pages.base_page import BasePage
-from pages.profile_page import ProfilePage
 from locators.feed_order_locators import *
 
 class FeedOrderPage(BasePage):

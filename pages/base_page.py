@@ -1,17 +1,9 @@
 import allure
-from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-class WebdriverFactory:
-    @staticmethod
-    def get_webdriver(browser_name):
-        if browser_name == 'chrome':
-            return webdriver.Chrome()
-        elif browser_name == 'firefox':
-            return webdriver.Firefox()
 
 
 class BasePage:
@@ -22,10 +14,9 @@ class BasePage:
     def get_to_url(self, url):
         with allure.step(f"Переходим на страницу: {url}"):
             self.driver.get(url)
-            self.driver.implicitly_wait(5)
 
     def click_to_element_xpath(self, locator):
-        element = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(locator))
+        element = self.find_element(locator)
         return element.click()
 
     def click_to_element_js(self, locator):
@@ -33,7 +24,7 @@ class BasePage:
         return self.driver.execute_script("arguments[0].click();", element)
 
     def send_keys_to_field(self, locator, text):
-        element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
+        element = self.find_element(locator)
         with allure.step(f"Вводим текст: {text}"):
             element.send_keys(text)
 
@@ -60,3 +51,6 @@ class BasePage:
     def get_text_from_element(self, locator):
         element = self.find_element(locator)
         return element.text
+
+    def get_current_url(self):
+        return self.driver.current_url

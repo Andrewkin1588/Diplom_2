@@ -5,8 +5,10 @@ from pages.main_page import MainPage
 from pages.profile_page import ProfilePage
 from pages.feed_order_page import FeedOrderPage
 
+
 class TestFeedOrder:
 
+    allure.title("Лента заказов")
     def test_feed_order(self, browser):
         login_page = LoginPage(browser)
         main_page = MainPage(browser)
